@@ -4,15 +4,16 @@ import ProfilePage from "./pages/ProfilePage.jsx"
 import Auth from "./pages/Auth.jsx"
 import HomePage from "./pages/HomePage.jsx"
 import TrackPage from "./pages/TrackPage.jsx"
+import RequireAuth from "./hoc/RequireAuth.jsx"
 
 export const authRoutes = [
     {
         path: ADMIN_ROUTE,
-        element: <Admin/>,
+        element: <RequireAuth><Admin/></RequireAuth>,
     },
     {
         path: PROFILE_ROUTE,
-        element: <ProfilePage/>,
+        element: <RequireAuth><ProfilePage/></RequireAuth>,
     },
 ]
 
