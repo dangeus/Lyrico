@@ -1,5 +1,9 @@
-function App() {
-  return (<div>Hello World!</div>)
-}
+import React from 'react'
+import {RouterProvider} from "react-router-dom"
+import {AppRouter} from "./components/AppRouter.jsx"
 
-export default App
+export default function App() {
+    return (
+        <RouterProvider router={AppRouter}/>
+    )
+}
