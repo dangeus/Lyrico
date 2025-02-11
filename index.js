@@ -1,6 +1,6 @@
 import express from 'express'
 import mongoose from 'mongoose'
-import authRouter from "./authRouter.js"
+import authRouter from "./routes/authRouter.js"
 
 const DB_URL = `mongodb+srv://minikepkrut:HCc8CMjMOKAE0KKr@cluster0.ypov3.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0`
 const PORT = process.env.PORT || 5000
