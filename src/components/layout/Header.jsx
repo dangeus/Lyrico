@@ -1,10 +1,12 @@
-import NavButton from "../ui/NavButton.jsx"
-import HomeButton from '../../assets/icons/HomeIcon.svg'
+import {Box, Button} from "@mui/material"
+import NavLinks from "../widgets/NavLinks"
+import SearchBar from "../ui/SearchBar"
 
 export default function Header() {
     return (
-        <header className="bg-blue-500 text-white p-4 shadow-md">
-            <NavButton icon={HomeButton} text="Главная"/>
-        </header>
+        <Box sx={{display: "flex", justifyContent: "space-between", alignItems: "center", py: 1, px: 3}}>
+            <NavLinks/>
+            <SearchBar/>
+        </Box>
     )
 }

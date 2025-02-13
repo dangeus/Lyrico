@@ -1,12 +1,12 @@
 import {createBrowserRouter} from "react-router-dom"
 import {authRoutes, publicRoutes} from "./routes.jsx"
-import HomeLayout from "../layouts/HomeLayout.jsx"
+import MainLayout from "../layouts/MainLayout.jsx"
 import {HOME_ROUTE} from "../utils/consts.js"
 
 export const AppRouter = createBrowserRouter([
     {
         path: HOME_ROUTE,
-        element: <HomeLayout/>,
+        element: <MainLayout/>,
         children: [...authRoutes, ...publicRoutes],
     }
 ])

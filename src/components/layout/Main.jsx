@@ -1,7 +1,9 @@
+import {Box, Container} from "@mui/material"
+
 export default function Main({children}) {
     return (
-        <main className="flex-1">
+        <Box component="main" sx={{backgroundColor:"red", height:"100vh" }}>
             {children}
-        </main>
+        </Box>
     )
 }
