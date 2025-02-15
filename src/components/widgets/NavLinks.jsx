@@ -1,21 +1,14 @@
-import {Box, Button} from "@mui/material"
+import {Box, Button, ButtonGroup} from "@mui/material"
 import {Home, Brush, GitHub} from "@mui/icons-material"
-import LogoButton from "../ui/LogoButton.jsx"
 
 export default function NavLinks() {
     return (
-        <Box sx={{display: "flex", gap: 2}}>
-            <LogoButton/>
-            <Button startIcon={<Home sx={{color: "#d8b3d8", width: 30, height: 30}}/>}
-                    sx={{color: "#606060", textTransform: "none"}}>HOME</Button>
-            <Button startIcon={<GitHub sx={{color: "#d8b3d8", width: 30, height: 30}}/>}
-                    sx={{color: "#606060", textTransform: "none"}}>GITHUB</Button>
-            <Button startIcon={<Brush sx={{color: "#d8b3d8", width: 30, height: 30}}/>}
-                    sx={{color: "#606060", textTransform: "none"}}>DEVIANTART</Button>
-            <Button startIcon={<Brush sx={{color: "#d8b3d8", width: 30, height: 30}}/>}
-                    sx={{color: "#606060", textTransform: "none"}}>DEVIANTART</Button>
-            <Button startIcon={<Brush sx={{color: "#d8b3d8", width: 30, height: 30}}/>}
-                    sx={{color: "#606060", textTransform: "none"}}>DEVIANTART</Button>
-        </Box>
+        <ButtonGroup variant="text" disableRipple>
+            <Button sx={{color: "#606060", px:5}}>HOME</Button>
+            <Button sx={{color: "#606060", px:5}}>GITHUB</Button>
+            <Button sx={{color: "#606060", px:5}}>DEVIANTART</Button>
+            <Button sx={{color: "#606060", px:5}}>DEVIANTART</Button>
+            <Button sx={{color: "#606060", px:5}}>DEVIANTART</Button>
+        </ButtonGroup>
     )
 }
