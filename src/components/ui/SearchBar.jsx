@@ -1,24 +1,28 @@
-import {Box, Button, TextField} from "@mui/material"
+import {Box, IconButton, TextField} from "@mui/material"
+import SearchIcon from '@mui/icons-material/Search';
 
 export default function SearchBar() {
     return (
-        <Box sx={{display: "flex", gap: 1}}>
-            <TextField
-                variant="outlined"
-                placeholder="Search . . ."
-                sx={{
-                    background: "#f5f5f5",
-                    borderRadius: 8,
-                    width: 250,
-                    '& .MuiOutlinedInput-root': {
-                        borderRadius: 8,
-                        height:30
+        <Box sx={{display: "flex", alignItems: "center"}}>
+            <TextField sx={{
+                '& .MuiOutlinedInput-root': {
+                    '& fieldset': {
+                        borderColor: 'black', // Цвет бордера по умолчанию
                     },
-                    height:30
-                }}
-            />
-            <Button variant="contained" sx={{bgcolor: "#d8b3d8", color: "white"}}>POST</Button>
+                    '&.Mui-focused fieldset': {
+                        borderColor: 'purple', // Цвет бордера при фокусе
+                    },
+                }
+            }} slotProps={{
+                input: {
+                    sx: {
+                        height: 35,
+                    }
+                }
+            }} placeholder="Search . . ."/>
+            <IconButton>
+                <SearchIcon/>
+            </IconButton>
         </Box>
-
     )
 }

@@ -1,10 +1,11 @@
-import {ADMIN_ROUTE, HOME_ROUTE, LOGIN_ROUTE, PROFILE_ROUTE, REGISTRATION_ROUTE, TRACK_ROUTE} from "../utils/consts.js"
+import {ADMIN_ROUTE, LOGIN_ROUTE, PROFILE_ROUTE, REGISTRATION_ROUTE, TRACK_ROUTE} from "../utils/consts.js"
 import Admin from "../pages/Admin.jsx"
 import ProfilePage from "../pages/ProfilePage.jsx"
-import Auth from "../pages/Auth.jsx"
+import LoginPage from "../pages/LoginPage.jsx"
 import HomePage from "../pages/HomePage.jsx"
 import TrackPage from "../pages/TrackPage.jsx"
 import RequireAuth from "../hoc/RequireAuth.jsx"
+import RegistrationPage from "../pages/RegistrationPage.jsx"
 
 export const authRoutes = [
     {
@@ -24,11 +25,11 @@ export const publicRoutes = [
     },
     {
         path: LOGIN_ROUTE,
-        element: <Auth/>,
+        element: <LoginPage/>,
     },
     {
         path: REGISTRATION_ROUTE,
-        element: <Auth/>,
+        element: <RegistrationPage/>,
     },
 
     {

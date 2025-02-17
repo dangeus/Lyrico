@@ -4,7 +4,7 @@ import LilitaOne from '../assets/fonts/LilitaOne-Regular.ttf'
 export const theme = createTheme({
     typography: {
         fontFamily: 'LilitaOne, Arial',
-        fontSize: 20
+        fontSize: 20,
     },
     components: {
         MuiCssBaseline: {

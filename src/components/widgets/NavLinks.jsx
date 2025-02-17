@@ -1,14 +1,21 @@
-import {Box, Button, ButtonGroup} from "@mui/material"
-import {Home, Brush, GitHub} from "@mui/icons-material"
+import React from "react"
+import {Link} from 'react-router-dom'
+import {Box, Button, Divider} from "@mui/material"
+import {HOME_ROUTE} from "../../utils/consts.js"
 
 export default function NavLinks() {
+    const links = [
+        { name: 'HOME', route: HOME_ROUTE },
+    ]
+
     return (
-        <ButtonGroup variant="text" disableRipple>
-            <Button sx={{color: "#606060", px:5}}>HOME</Button>
-            <Button sx={{color: "#606060", px:5}}>GITHUB</Button>
-            <Button sx={{color: "#606060", px:5}}>DEVIANTART</Button>
-            <Button sx={{color: "#606060", px:5}}>DEVIANTART</Button>
-            <Button sx={{color: "#606060", px:5}}>DEVIANTART</Button>
-        </ButtonGroup>
+        <Box sx={{display: "flex"}}>
+            {links.map((link, index) => (
+                <React.Fragment key={index}>
+                    {index !== 0 && <Divider sx={{borderColor:"black"}} orientation="vertical" flexItem/>}
+                    <Button sx={{color: "#313131", px: 5}} component={Link} to={link.route} disableRipple>{link.name}</Button>
+                </React.Fragment>
+            ))}
+        </Box>
     )
 }
