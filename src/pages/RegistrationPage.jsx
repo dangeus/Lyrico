@@ -6,14 +6,31 @@ export default function RegistrationPage() {
     const [username,setUsername] = useState('')
     const [email,setEmail] = useState('')
     const [password,setPassword] = useState('')
+    const [usernameError,setUsernameError] = useState('')
+    const [emailError, setEmailError] = useState('')
+    const [passwordError, setPasswordError] = useState('')
 
-    const API_BASE_URL = import.meta.env.API_BASE_URL
+    const VITE_API_BASE_URL = import.meta.env.VITE_API_BASE_URL
 
-    const handleRegister = async () => {
+    const handleRegister = async (e) => {
+        e.preventDefault()
+
         try {
-            const responce = await axios.post(API_BASE_URL, {username, email, password})
+            const response = await axios.post(`${VITE_API_BASE_URL}/registration`, {username, email, password})
         } catch (error) {
             console.error('Registration failed:', error.response?.data || error.message)
+
+            if (error.response?.data?.field === "email") {
+                setEmailError(error.response.data.message)
+                setEmail('')
+                setPassword('')
+            } else if (error.response?.data?.field === "password") {
+                setPasswordError(error.response.data.message)
+                setPassword('')
+            } else {
+                setEmailError("Ошибка входа")
+                setPasswordError("Ошибка входа")
+            }
         }
     }
 
@@ -52,6 +69,15 @@ export default function RegistrationPage() {
                         type="password"
                         id="password"
                         autoComplete="current-password"
+                    />
+                    <TextField
+                        margin="normal"
+                        required
+                        fullWidth
+                        name="passwordRepeat"
+                        label="Password repeat"
+                        type="passwordRepeat"
+                        id="passwordRepeat"
                     />
                     <Button
                         type="submit"

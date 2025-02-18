@@ -7,14 +7,32 @@ import axios from "axios"
 export default function LoginPage() {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
+    const [emailError, setEmailError] = useState('')
+    const [passwordError, setPasswordError] = useState('')
 
-    const API_BASE_URL = import.meta.env.API_BASE_URL
+    const VITE_API_BASE_URL = import.meta.env.VITE_API_BASE_URL
 
-    const handleLogin = async () => {
+    const handleLogin = async (e) => {
+        e.preventDefault()
+
         try {
-            const responce = await axios.post(API_BASE_URL, {email, password})
+            const response = await axios.post(`${VITE_API_BASE_URL}/login`, {email, password})
+            setEmailError('')
+            setPasswordError('')
         } catch (error) {
-            console.error('Login failed:', error.response?.data || error.message)
+            console.error("Login failed:", error.response?.data || error.message);
+
+            if (error.response?.data?.field === "email") {
+                setEmailError(error.response.data.message)
+                setEmail('')
+                setPassword('')
+            } else if (error.response?.data?.field === "password") {
+                setPasswordError(error.response.data.message)
+                setPassword('')
+            } else {
+                setEmailError("Ошибка входа")
+                setPasswordError("Ошибка входа")
+            }
         }
     }
 
@@ -34,7 +52,14 @@ export default function LoginPage() {
                         name="email"
                         autoComplete="email"
                         autoFocus
-                        onChange={(e)=>setEmail(e.target.value)}
+                        value={email}
+                        error={!!emailError}
+                        helperText={emailError}
+                        onFocus={() => setEmailError('')}
+                        onChange={(e) => {
+                            setEmail(e.target.value)
+                            setEmailError('')
+                        }}
                     />
                     <TextField
                         margin="normal"
@@ -45,7 +70,14 @@ export default function LoginPage() {
                         type="password"
                         id="password"
                         autoComplete="current-password"
-                        onChange={(e)=>setPassword(e.target.value)}
+                        value={password}
+                        error={!!passwordError}
+                        helperText={passwordError}
+                        onFocus={() => setPasswordError('')}
+                        onChange={(e) => {
+                            setPassword(e.target.value)
+                            setPasswordError('')
+                        }}
                     />
                     <Button
                         type="submit"
@@ -57,9 +89,6 @@ export default function LoginPage() {
                         Sign in
                     </Button>
                     <Box sx={{display: 'flex', justifyContent: 'center'}}>
-                        {/*<Typography sx={{color: "#673ab7"}} component={Link}>
-                            Forgot your password?
-                        </Typography>*/}
                         <Typography sx={{color: "#673ab7"}} component={Link} to={REGISTRATION_ROUTE}>
                             No account? Sign up
                         </Typography>
