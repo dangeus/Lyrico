@@ -1,13 +1,15 @@
 import {Link} from 'react-router-dom'
 import {AppBar, Avatar, Box, Button, IconButton, Toolbar} from "@mui/material"
-import NavLinks from "../widgets/NavLinks"
-import SearchBar from "../ui/SearchBar"
+import NavLinks from "../widgets/NavLinks.js"
+import SearchBar from "../ui/SearchBar.js"
 import {useSelector} from "react-redux"
 import LoginIcon from '@mui/icons-material/Login';
-import {LOGIN_ROUTE} from "../../utils/consts.js"
+import {LOGIN_ROUTE} from "../../utils/consts"
+import type {RootState} from "../../store/store";
+import {JSX} from "react";
 
-export default function Header() {
-    const isAuthenticated = useSelector(state => state.auth.isAuthenticated)
+export default function Header(): JSX.Element {
+    const isAuthenticated = useSelector((state: RootState) => state.auth.isAuthenticated)
 
     return (
         <AppBar sx={{backgroundColor: "#ffffff"}} elevation={0} position="static">

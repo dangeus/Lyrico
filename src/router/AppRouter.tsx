@@ -1,7 +1,7 @@
 import {createBrowserRouter} from "react-router-dom"
-import {authRoutes, publicRoutes} from "./routes.jsx"
-import MainLayout from "../layouts/MainLayout.jsx"
-import {HOME_ROUTE} from "../utils/consts.js"
+import {authRoutes, publicRoutes} from "./routes"
+import MainLayout from "../layouts/MainLayout"
+import {HOME_ROUTE} from "../utils/consts"
 
 export const AppRouter = createBrowserRouter([
     {
