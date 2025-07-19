@@ -1,4 +1,4 @@
-import {ValidationResult} from "../types/auth";
+import {ValidationResult} from '../types/auth'
 
 export function isValidEmail(email: string): ValidationResult {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/

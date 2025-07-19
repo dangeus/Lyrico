@@ -1,8 +1,8 @@
-import {RegisterForm, FormErrors} from '../types/auth'
-import {isValidUsername, isValidEmail, isValidPassword, isValidPasswordConfirm} from './registerValidation'
+import {RegisterForm, RegisterErrors} from '../types/auth'
+import {isValidEmail, isValidPassword, isValidPasswordConfirm, isValidUsername} from "./authValidation";
 
-export function validateRegisterForm(form: RegisterForm): FormErrors {
-    const errors: FormErrors = {}
+export function validateRegisterForm(form: RegisterForm): RegisterErrors {
+    const errors: RegisterErrors = {}
 
     const usernameCheck = isValidUsername(form.username)
     if (!usernameCheck.valid) errors.usernameError = usernameCheck.message

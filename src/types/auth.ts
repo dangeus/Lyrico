@@ -5,11 +5,21 @@ export interface RegisterForm {
     passwordConfirmation: string
 }
 
-export interface FormErrors {
+export interface RegisterErrors {
     usernameError?: string | null
     emailError?: string | null
     passwordError?: string | null
     passwordConfirmationError?: string | null
+}
+
+export interface LoginForm {
+    email: string
+    password: string
+}
+
+export interface LoginErrors {
+    emailError?: string | null
+    passwordError?: string | null
 }
 
 export interface ValidationResult {
