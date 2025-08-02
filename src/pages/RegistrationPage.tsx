@@ -9,6 +9,8 @@ export default function RegistrationPage() {
         handleChange
     } = useRegisterForm()
 
+
+
     return (
         <Container sx={{pt: 10}} component="main" maxWidth="xs">
             <Paper
