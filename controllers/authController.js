@@ -3,7 +3,6 @@ import Role from "../models/Role.js"
 import bcrypt from 'bcryptjs'
 import jwt from 'jsonwebtoken'
 import config from '../config.js'
-import {validationResult} from "express-validator"
 
 function generateAccessToken(id, roles) {
     const payload = {
@@ -24,7 +23,7 @@ class authController {
 
             if (existingUser) {
                 if (existingUser.username === username) {
-                    return res.status(400).json({message: 'Nick is busy', field: 'username'})
+                    return res.status(400).json({message: 'Nickname is busy', field: 'username'})
                 }
                 if (existingUser.email === email) {
                     return res.status(400).json({message: 'Email is busy', field: 'email'})
@@ -34,11 +33,12 @@ class authController {
             const hashPassword = await bcrypt.hash(password, 7)
 
             let userRole = await Role.findOne({value: 'USER'})
+
             if (!userRole) {
                 return res.status(500).json({message: 'Role USER not found'})
             }
 
-            const user = new User({username, password: hashPassword, roles: [userRole.value]})
+            const user = new User({username, email, password: hashPassword, roles: [userRole.value]})
 
             await user.save()
 
@@ -50,22 +50,42 @@ class authController {
     }
 
     async login(req, res) {
+        const {email, password} = req.body
+
         try {
-            const {email, password} = req.body
             const user = await User.findOne({email})
             if (!user) {
                 return res.status(400).json({message: 'User was not found', field: 'email'})
             }
+
             const validPassword = bcrypt.compareSync(password, user.password)
             if (!validPassword) {
                 return res.status(400).json({message: 'Incorrect password entered', field: 'password'})
             }
+
             const token = generateAccessToken(user._id, user.roles)
-            return res.json({token})
+
+            return res.cookie('token', token, {
+                httpOnly: true,
+                secure: false,
+                sameSite: 'Strict', // или 'Lax'
+                maxAge: 7 * 24 * 60 * 60 * 1000 // 7 дней
+            })
+                .status(200)
+                .json({user: user.username})
         } catch (error) {
             console.log(error)
             res.status(400).json(error)
         }
+    }
+
+    async logout(req, res) {
+        res.clearCookie('token', {
+            httpOnly: true,
+            secure: false,
+            sameSite: 'Strict'
+        })
+        res.status(200).json({message: 'Successfully logged out'})
     }
 
     async getUsers(req, res) {
@@ -74,6 +94,14 @@ class authController {
             res.json(users)
         } catch (error) {
             console.log(error)
+            res.status(400).json(error)
+        }
+    }
+
+    async checkAuth(req, res) {
+        try {
+            res.status(200).json({user: req.user})
+        } catch (error) {
             res.status(400).json(error)
         }
     }
