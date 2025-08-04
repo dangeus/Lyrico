@@ -17,7 +17,7 @@ export function useLoginForm() {
 
     const [errors, setErrors] = useState<LoginErrors>({})
 
-    const VITE_API_BASE_URL = import.meta.env.VITE_API_BASE_URL
+    const VITE_AUTH_API_BASE_URL = import.meta.env.VITE_AUTH_API_BASE_URL
 
     function handleChange<K extends keyof LoginForm>(
         key: K,
@@ -40,7 +40,7 @@ export function useLoginForm() {
 
         try {
 
-            const res = await axios.post(`${VITE_API_BASE_URL}/login`, {
+            const res = await axios.post(`${VITE_AUTH_API_BASE_URL}/login`, {
                 email: loginForm.email,
                 password: loginForm.password
             }, {withCredentials: true})

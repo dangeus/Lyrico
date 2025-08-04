@@ -16,7 +16,7 @@ export function useRegisterForm() {
 
     const [errors, setErrors] = useState<RegisterErrors>({})
 
-    const VITE_API_BASE_URL = import.meta.env.VITE_API_BASE_URL
+    const VITE_AUTH_API_BASE_URL = import.meta.env.VITE_AUTH_API_BASE_URL
 
     function handleChange<K extends keyof RegisterForm>(
         key: K,
@@ -38,7 +38,7 @@ export function useRegisterForm() {
         }
 
         try {
-            await axios.post(`${VITE_API_BASE_URL}/registration`, {
+            await axios.post(`${VITE_AUTH_API_BASE_URL}/registration`, {
                 username: registerForm.username,
                 email: registerForm.email,
                 password: registerForm.password

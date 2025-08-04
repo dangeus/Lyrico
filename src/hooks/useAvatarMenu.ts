@@ -28,7 +28,7 @@ export function useAvatarMenu() {
         handleClose()
 
         try {
-            await axios.post(`${import.meta.env.VITE_API_BASE_URL}/logout`, {}, {
+            await axios.post(`${import.meta.env.VITE_AUTH_API_BASE_URL}/logout`, {}, {
                 withCredentials: true
             })
         } catch (error) {
