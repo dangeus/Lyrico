@@ -1,4 +1,5 @@
-import {createSlice} from '@reduxjs/toolkit';
+import {createSlice} from '@reduxjs/toolkit'
+import {AuthState} from "../../types/auth"
 
 const authSlice = createSlice({
     name: 'auth',
@@ -7,7 +8,7 @@ const authSlice = createSlice({
         isAuthenticated: false,
         loading: true,
         error: null,
-    },
+    } as AuthState,
     reducers: {
         loginSuccess(state, action) {
             state.user = action.payload

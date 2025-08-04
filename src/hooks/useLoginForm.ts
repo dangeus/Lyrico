@@ -1,10 +1,10 @@
 import {useState, FormEvent} from 'react'
 import {LoginForm, LoginErrors} from '../types/auth'
-import {validateLoginForm} from "../validation/validateLoginForm";
-import axios from "axios";
-import {useNavigate} from "react-router-dom";
-import {useDispatch} from "react-redux";
-import {loginSuccess} from "../features/auth/authSlice";
+import {validateLoginForm} from "../validation/validateLoginForm"
+import axios from "axios"
+import {useNavigate} from "react-router-dom"
+import {useDispatch} from "react-redux"
+import {loginSuccess} from "../features/auth/authSlice"
 
 export function useLoginForm() {
     const navigate = useNavigate()
@@ -39,7 +39,6 @@ export function useLoginForm() {
         }
 
         try {
-
             const res = await axios.post(`${VITE_AUTH_API_BASE_URL}/login`, {
                 email: loginForm.email,
                 password: loginForm.password

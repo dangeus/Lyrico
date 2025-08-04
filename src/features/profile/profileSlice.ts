@@ -1,4 +1,5 @@
-import {createSlice} from '@reduxjs/toolkit';
+import {createSlice} from '@reduxjs/toolkit'
+import {ProfileState} from "../../types/profile"
 
 const profileSlice = createSlice({
     name: 'profile',
@@ -6,7 +7,7 @@ const profileSlice = createSlice({
         data: null,
         loading: false,
         error: null,
-    },
+    } as ProfileState,
     reducers: {
         setLoading(state, action) {
             state.loading = action.payload

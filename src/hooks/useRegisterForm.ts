@@ -1,8 +1,8 @@
 import {useState, FormEvent} from 'react'
 import {RegisterForm, RegisterErrors} from '../types/auth'
 import {validateRegisterForm} from '../validation/validateRegisterForm'
-import axios from "axios";
-import {useNavigate} from "react-router-dom";
+import axios from "axios"
+import {useNavigate} from "react-router-dom"
 
 export function useRegisterForm() {
     const navigate = useNavigate()

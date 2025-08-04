@@ -1,8 +1,8 @@
-import React, {useState} from "react";
-import {useNavigate} from "react-router-dom";
-import axios from "axios";
-import {useDispatch} from "react-redux";
-import {logout} from "../features/auth/authSlice";
+import React, {useState} from "react"
+import {useNavigate} from "react-router-dom"
+import axios from "axios"
+import {useDispatch} from "react-redux"
+import {logout} from "../features/auth/authSlice"
 
 
 export function useAvatarMenu() {

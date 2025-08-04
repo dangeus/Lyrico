@@ -1,5 +1,5 @@
 import {RegisterForm, RegisterErrors} from '../types/auth'
-import {isValidEmail, isValidPassword, isValidPasswordConfirm, isValidUsername} from "./authValidation";
+import {isValidEmail, isValidPassword, isValidPasswordConfirm, isValidUsername} from "./authValidation"
 
 export function validateRegisterForm(form: RegisterForm): RegisterErrors {
     const errors: RegisterErrors = {}

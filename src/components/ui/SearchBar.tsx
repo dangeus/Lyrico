@@ -1,6 +1,6 @@
 import {Box, IconButton, TextField} from "@mui/material"
-import SearchIcon from '@mui/icons-material/Search';
-import {JSX} from "react";
+import SearchIcon from '@mui/icons-material/Search'
+import {JSX} from "react"
 
 export default function SearchBar(): JSX.Element {
     return (

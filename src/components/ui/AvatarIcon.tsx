@@ -1,7 +1,7 @@
-import {Avatar, IconButton, ListItemIcon, Menu, MenuItem} from "@mui/material";
-import React from "react";
-import {useAvatarMenu} from "../../hooks/useAvatarMenu";
-import {AccountCircle, Logout} from "@mui/icons-material";
+import {Avatar, IconButton, ListItemIcon, Menu, MenuItem} from "@mui/material"
+import React from "react"
+import {useAvatarMenu} from "../../hooks/useAvatarMenu"
+import {AccountCircle, Logout} from "@mui/icons-material"
 
 export default function AvatarIcon() {
     const {

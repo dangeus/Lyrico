@@ -1,3 +1,14 @@
+export interface User {
+    username: string
+}
+
+export interface AuthState {
+    user: User | null
+    isAuthenticated: boolean
+    loading: boolean
+    error: string | null
+}
+
 export interface RegisterForm {
     username: string
     email: string

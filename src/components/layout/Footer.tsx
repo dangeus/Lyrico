@@ -1,5 +1,5 @@
 import {Box, Typography} from "@mui/material"
-import {JSX} from "react";
+import {JSX} from "react"
 
 export default function Footer(): JSX.Element {
     return (

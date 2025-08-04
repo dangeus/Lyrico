@@ -1,5 +1,5 @@
 import {Box} from "@mui/material"
-import {JSX} from "react";
+import {JSX} from "react"
 
 interface Props {
     children: JSX.Element

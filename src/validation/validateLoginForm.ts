@@ -1,5 +1,5 @@
-import {LoginErrors, LoginForm} from "../types/auth";
-import {isValidEmail, isValidPassword, isValidPasswordConfirm, isValidUsername} from "./authValidation";
+import {LoginErrors, LoginForm} from "../types/auth"
+import {isValidEmail, isValidPassword} from "./authValidation"
 
 export function validateLoginForm(form: LoginForm): LoginErrors {
     const errors: LoginErrors = {}
