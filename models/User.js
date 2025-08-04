@@ -5,11 +5,11 @@ const userSchema = new Schema({
     email: {type: String, unique: true, required: true},
     password: {type: String, required: true},
     roles: [{type: String, ref: 'Role'}],
-    about: {type: String, default: ''},           // описание о себе
-    status: {type: String, default: 'online'},     // статус пользователя
-    avatarUrl: {type: String, default: ''},           // ссылка на аватар
-    favoriteTracks: [{type: Types.ObjectId, ref: 'Track'}], // избранные треки
-    friends: [{type: Types.ObjectId, ref: 'User'}]   // список друзей
+    about: {type: String, default: ''},
+    status: {type: String, default: 'online'},
+    avatarUrl: {type: String, default: ''},
+    favouriteTracks: [{type: Types.ObjectId, ref: 'Track'}],
+    friends: [{type: Types.ObjectId, ref: 'User'}]
 })
 
 export default model('User', userSchema)
